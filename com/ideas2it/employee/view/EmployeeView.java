@@ -1,9 +1,8 @@
 package com.ideas2it.employee.view;
 
+import java.util.Scanner;
 import com.ideas2it.employee.controller.EmployeeController;
 import com.ideas2it.employee.model.Employee;
-
-import java.util.Scanner;
 
 public class EmployeeView {
     EmployeeController controller = new EmployeeController();
@@ -102,8 +101,7 @@ public class EmployeeView {
         String firstName = scanner1.nextLine();
         System.out.println("Enter Last Name: ");
         String lastName = scanner1.nextLine();
-        Employee employee = new Employee();
-        employee.setStatus(true);
+
         controller.createEmployee(employeeid,phoneNumber,emailID,firstName,lastName);
 
         System.out.println("Employee Successfully created");
@@ -125,8 +123,17 @@ public class EmployeeView {
     public void updateEmployee() {
         Scanner scanner3 = new Scanner(System.in);
         System.out.println("Please enter the Emp-id of the employee you wish to update: ");
-        Integer update= scanner3.nextInt();
-        Employee e1 = controller.updateEmployee(update);
+        Integer update= Integer.parseInt(scanner3.nextLine());
+        System.out.println("Enter new Phone Number");
+        String phoneNumber= scanner3.nextLine();
+        System.out.println("Enter new EmailID ");
+        String emailID = scanner3.nextLine();
+        System.out.println("Enter new First Name: ");
+        String firstName = scanner3.nextLine();
+        System.out.println("Enter new Last Name: ");
+        String lastName = scanner3.nextLine();
+
+        int e1 = controller.updateEmployee(update,phoneNumber,emailID,firstName,lastName);
         System.out.println(e1);
 
     }

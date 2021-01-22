@@ -1,15 +1,11 @@
 package com.ideas2it.employee.service;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import com.ideas2it.employee.dao.EmployeeDaoImpl;
 import com.ideas2it.employee.model.Employee;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class EmployeeService {
     EmployeeDaoImpl dao = new EmployeeDaoImpl();
-
-
 
     /**
      * This method is used to create the employee details.
@@ -46,8 +42,13 @@ public class EmployeeService {
         return dao.getEmployeeById(id);
 
     }
-    public Employee updateEmployee(Integer update) {
-        return dao.updateEmployee(update);
+    /**
+     * This method is used to update the employee details.
+     */
+
+    public int updateEmployee(Integer update, String phoneNumber, String emailID, String firstName, String lastName) {
+
+        return dao.updateEmployee(update,phoneNumber,emailID,firstName,lastName);
 
     }
     /**

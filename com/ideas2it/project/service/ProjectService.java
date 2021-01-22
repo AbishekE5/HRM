@@ -1,13 +1,12 @@
 package com.ideas2it.project.service;
 
+import java.sql.SQLException;
 import com.ideas2it.project.dao.ProjectDaoImpl;
 import com.ideas2it.project.model.Project;
 
-import java.sql.SQLException;
 
 public class ProjectService {
     ProjectDaoImpl dao = new ProjectDaoImpl();
-
 
     /**
      * This method is used to create the employee details.
@@ -23,7 +22,6 @@ public class ProjectService {
     public Project createProject(Integer projectId, String projectName, String timeEstimation, String budget, String description) throws SQLException {
         Project project = new Project(projectId, projectName, timeEstimation, budget, description);
         return dao.addProjectDetails(project);
-
     }
 
     /**
@@ -35,7 +33,6 @@ public class ProjectService {
 
     public Project deleteProject(Integer delete) {
         return dao.deleteProject(delete);
-
     }
 
     /**
@@ -58,4 +55,8 @@ public class ProjectService {
         return dao.getProjectById(id);
     }
 
+    public Project updateproject(Integer update, String projectName, String timeEstimation, String bugdet, String description) {
+        Project project = new Project(update,description,timeEstimation,bugdet,projectName);
+        return dao.updateProject(project);
+    }
 }

@@ -1,9 +1,9 @@
 package com.ideas2it.project.controller;
-
+import java.sql.SQLException;
 import com.ideas2it.project.model.Project;
 import com.ideas2it.project.service.ProjectService;
 
-import java.sql.SQLException;
+
 
 public class ProjectController {
     /**
@@ -25,7 +25,6 @@ public class ProjectController {
      * @param id This is the  parameter to retrive Employee
      * @return retrive
      */
-
     public Project getProjectById(int id){
         return service.getProjectById(id);
     }
@@ -38,5 +37,15 @@ public class ProjectController {
     public Project deleteProject(Integer delete){
         return service.deleteProject(delete);
 
+    }
+
+    /**
+     * This method is used to send the user input to update employee details.
+     *
+     * @return delete
+     */
+
+    public Project updateProject(Integer update, String projectName, String timeEstimation, String bugdet, String description) {
+        return service.updateproject(update,projectName,timeEstimation,bugdet,description);
     }
 }

@@ -34,14 +34,6 @@ public class EmployeeController {
     }
 
     /**
-     * This method is used retrive employee details.
-     *
-     *
-     *
-     */
-
-
-    /**
      * This method is used to validate phone number entered by user.
      * @param phoneNumber
      * @return phoneNumber
@@ -50,13 +42,19 @@ public class EmployeeController {
         return service.phoneNumber(phoneNumber);
     }
 
-
+    /**
+     * This method is used retrive employee details.
+     */
     public Employee getEmployeeById(int id){
         return service.getEmployeeById(id);
 
     }
 
-    public Employee updateEmployee(Integer update) {
-        return service.updateEmployee(update);
+    /**
+     * This method is used to update employee entered by user.
+
+     */
+    public int updateEmployee(Integer update, String phoneNumber, String emailID, String firstName, String lastName) {
+        return service.updateEmployee(update,phoneNumber,emailID,firstName,lastName);
     }
 }
