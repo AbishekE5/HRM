@@ -4,6 +4,7 @@ import java.util.Scanner;
 import com.ideas2it.employee.controller.EmployeeController;
 import com.ideas2it.employee.model.Employee;
 
+
 public class EmployeeView {
     EmployeeController controller = new EmployeeController();
 

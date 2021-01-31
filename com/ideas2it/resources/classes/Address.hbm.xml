@@ -1,0 +1,31 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+
+<hibernate-mapping auto-import="false" package="com.resources.classes">
+
+    <class name="Address" table="ADDRESS">
+        <id name="addressId" type="integer" column="addressId">
+            <generator class="native">
+            </generator>
+        </id>
+
+        <property name="city" column="city">
+            <property name="permanentAddress" type = "string" column="permanentAddress">
+                <property name="temporaryAddress" type = "string" column="temporaryAddress">
+
+
+                    <set name="employees" table="employee" inverse="true" lazy="true" fetch="select">
+                        <key>
+                            <column name="addressId" not-null="true">
+                            </column>
+                        </key>
+                        <many-to-one class="Employee">
+                        </many-to-one>
+                    </set>
+
+                </property>
+                >
+            </property>
+            >
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,8 +1,10 @@
 package com.ideas2it.employee.service;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 import com.ideas2it.employee.dao.EmployeeDaoImpl;
 import com.ideas2it.employee.model.Employee;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EmployeeService {
     EmployeeDaoImpl dao = new EmployeeDaoImpl();
@@ -20,10 +22,12 @@ public class EmployeeService {
 
     public Employee employeeStore(Integer employeeid, String phoneNumber, String emailID, String firstName, String lastName) {
         Employee employee = new Employee(employeeid, phoneNumber, emailID, firstName, lastName);
-        return dao.addEmployeeDetails(employee);
+        return dao.addEmployee(employee);
     }
+
     /**
      * This method is used to delete the employee details.
+     *
      * @param delete
      * @return delete
      */
@@ -34,29 +38,33 @@ public class EmployeeService {
 
     /**
      * This method is used to retrive the employee details.
+     *
      * @param
      * @return recievedEmployee
      */
 
-    public Employee getEmployeeById(int id){
+    public Employee getEmployeeById(int id) {
         return dao.getEmployeeById(id);
 
     }
+
     /**
      * This method is used to update the employee details.
      */
 
     public int updateEmployee(Integer update, String phoneNumber, String emailID, String firstName, String lastName) {
 
-        return dao.updateEmployee(update,phoneNumber,emailID,firstName,lastName);
+        return dao.updateEmployee(update, phoneNumber, emailID, firstName, lastName);
 
     }
+
     /**
      * This method is used to validate phone number
+     *
      * @param phoneNumber
      * @return true, false
      */
-    public boolean phoneNumber (String phoneNumber){
+    public boolean phoneNumber(String phoneNumber) {
         String number = "\\d{10}";
 
         //Creating a pattern object
@@ -72,6 +80,6 @@ public class EmployeeService {
 
         }
 
-
     }
 }
+

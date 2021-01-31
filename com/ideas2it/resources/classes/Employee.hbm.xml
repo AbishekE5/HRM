@@ -1,0 +1,16 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<hibernate-mapping auto-import="false" package="com.resources.classes">
+    <class name="Employee" table="EMPLOYEE">
+        <id name="employeeId" column="employeeID">
+            <generator class="native">
+            </generator></id>
+        <property name="phoneNumber" column="phoneNumber">
+            <property name="emailID" column="emailID">
+                <property name="firstName"  column="firstName">
+                    <property name="lastName" column="lastName">
+
+                        <one-to-many name="addressId" class="Address" fetch="select">
+                            <column name="addressId" not-null="true">
+                            </column></one-to-many>
+                    </property></property></property></property></class>
+</hibernate-mapping>

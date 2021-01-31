@@ -1,9 +1,14 @@
 package com.ideas2it.employee.dao;
+
 import com.ideas2it.employee.model.Address;
-import java.sql.SQLException;
+import com.ideas2it.employee.model.Employee;
 
 public interface AddressDao {
-    Address createAddress(Address address) throws SQLException;
+    public  void addressId(Address address);
 
-    int deleteAddress(int id);
+    public Address getAddressbyId(int addressId);
+
+    public void updateAddressById(Address address);
+
+    public  void deleteAddressById(Integer addressId);
 }

@@ -17,8 +17,8 @@ public class AddressController {
      * @return city, pincode, permanentAddress, temporaryAddress
      */
 
-    public Address createAddress(String city, String pincode, String permanentAddress, String temporaryAddress) throws SQLException {
-     return service.createAddress(city,pincode,permanentAddress,temporaryAddress);
+    public Address createAddress(Integer addressId, String city, String pincode, String permanentAddress, String temporaryAddress) throws SQLException {
+        return service.createAddress(addressId,city,pincode,permanentAddress,temporaryAddress);
 
     }
 
@@ -54,4 +54,5 @@ public class AddressController {
 
 
 
+}
 }

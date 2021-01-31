@@ -1,19 +1,27 @@
 package com.ideas2it.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.cfg.Configuration;
 
 public class Datasource {
-    public static Connection getConnection() {
 
-        Connection connection = null;
+        private static StandardServiceRegistry standardServiceRegistry;
+        private static SessionFactory sessionFactory;
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectmain", "adminuser", "element5@123");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return connection;
+    private Datasource() {
     }
+    public static SessionFactory getInstance() {
+            try {
+                if (sessionFactory == null) {
+                    Configuration configuration = new Configuration();
+                    configuration.configure("resources/properties/hibernate.cfg.xml");
+                    sessionFactory = configuration.buildSessionFactory();
+                }
+            } catch (Exception exception) {
+                System.out.println("Could not load connection" + exception.getMessage());
+                exception.printStackTrace();
+            }
+            return sessionFactory;
+        }
 }

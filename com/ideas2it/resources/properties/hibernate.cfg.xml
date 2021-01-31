@@ -1,0 +1,21 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/projectmain</property>
+        <property name="hibernate.connection.username">adminuser</property>
+        <property name="connection.password">element5@123</property>
+        <property name="connection.pool_size">2</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="show_sql">true</property>
+        <property name="hbm2ddl.auto">create</property>
+
+        <!-- One2Many set example and for HQL and SQL and Criteria Query as well -->
+        <mapping resource="com/resources/classes/Employee.hbm.xml">
+            <mapping resource="com/resources/classes/Address.hbm.xml">
+
+            </mapping>
+        </mapping>
+    </session-factory>
+</hibernate-configuration>
