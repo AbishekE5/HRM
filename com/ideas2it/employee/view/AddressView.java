@@ -1,37 +1,37 @@
+/**
+ * Provide the class necessary information to create address view class
+ * To communicate with the user to get input fiels
+ */
 package com.ideas2it.employee.view;
-
-import com.ideas2it.employee.controller.AddressController;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import com.ideas2it.employee.controller.AddressController;
+
 public class AddressView {
-    AddressController controller1 = new AddressController();
+    AddressController addressController = new AddressController();
 
     /**
      * This method is used to prompt user to enter menu options.
      */
-
     public static int menu() {
         System.out.println("Choose one option from following : ");
         System.out.println("1) Add a new city.");
         System.out.println("2) Delete an city via pincode.");
         System.out.println("3) Retrive an city via pincode.");
         System.out.println("4) Exit.");
-        Scanner sc = new Scanner(System.in);
-        return sc.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
     }
 
     /**
      * This method is used to perform the CRUD operations
      */
-
     public void performCrud() throws SQLException {
-
         int menuStore = menu();
         while (menuStore != 5) {
             System.out.println();
-
             switch (menuStore) {
 
                 /* switch statement to create employee details */
@@ -61,69 +61,47 @@ public class AddressView {
     /**
      * This method is used to add a new city
      */
-
     public void addCity() throws SQLException {
-        Scanner scanner1 = new Scanner(System.in);
-        String addressId;
-        boolean code = true;
-        do {
-            System.out.println("Enter your pincode ");
-            addressId = scanner1.nextLine();
-            if (controller1.pincode(addressId)) {
-                System.out.println("Entered addressId is Valid");
-                break;
-            } else {
-                System.out.println("Entered city is Invalid... Enter valid city");
-            }
-        } while (code);
-
-        System.out.println("Enter pincode ");
-        String pincode = scanner1.nextLine();
+        Scanner scanner = new Scanner(System.in);
+        Integer addressId = scanner.nextInt();
+        System.out.println("Enter addressId");
+        String pincode = scanner.nextLine();
         System.out.println("Enter Permanent Address: ");
-        String permanentAddress = scanner1.nextLine();
+        String permanentAddress = scanner.nextLine();
         System.out.println("Enter Temporary Address: ");
-        String temporaryAddress = scanner1.nextLine();
+        String temporaryAddress = scanner.nextLine();
         System.out.println("Enter Temporary Address: ");
-        String city = scanner1.nextLine();
+        String city = scanner.nextLine();
         System.out.println("City Successfully created");
-        controller1.createAddress(addressId,pincode, permanentAddress, temporaryAddress, city);
-
+        addressController.createAddress(addressId, pincode, permanentAddress, temporaryAddress, city);
     }
 
     /**
      * This method is used to delete a city
      */
-
     public void deleteCity() {
-        Scanner input2 = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the Emp-ID of the employee you wish to delete: ");
-        int delete = input2.nextInt();
-        controller1.deleteAddress(delete);
+        int employeeId = scanner.nextInt();
+        addressController.deleteAddress(employeeId);
         System.out.println("Employee Successfully deleted");
     }
-
 
     /**
      * This method is used to retrive a city
      */
-
-
     public void updateAddress() {
-        Scanner scanner4 = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the Emp-id of the employee you wish to retrive: ");
-        String update = scanner4.nextLine();
+        int employeeId = scanner.nextInt();
         System.out.println("Enter Temporary Address ");
-        String pincode = scanner4.nextLine();
-
+        String pincode = scanner.nextLine();
         System.out.println("Enter Permanent Address: ");
-        String permanentAddress = scanner4.nextLine();
-
+        String permanentAddress = scanner.nextLine();
         System.out.println("Enter Temporary Address: ");
-        String temporaryAddress = scanner4.nextLine();
-
+        String temporaryAddress = scanner.nextLine();
         System.out.println("Enter city ");
-        String city = scanner4.nextLine();
-        controller1.updateAddress(update, pincode, permanentAddress, temporaryAddress);
-
+        String city = scanner.nextLine();
+        addressController.updateAddress(employeeId, pincode, permanentAddress, temporaryAddress, city);
     }
 }

@@ -1,27 +1,42 @@
+/**
+ * Provide the class necessary information to create database class
+ */
 package com.ideas2it.util;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.cfg.Configuration;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
+/**
+ * To create class providing connection instance
+ */
 public class Datasource {
 
-        private static StandardServiceRegistry standardServiceRegistry;
-        private static SessionFactory sessionFactory;
+    static Datasource datasource = null;
 
     private Datasource() {
     }
-    public static SessionFactory getInstance() {
-            try {
-                if (sessionFactory == null) {
-                    Configuration configuration = new Configuration();
-                    configuration.configure("resources/properties/hibernate.cfg.xml");
-                    sessionFactory = configuration.buildSessionFactory();
-                }
-            } catch (Exception exception) {
-                System.out.println("Could not load connection" + exception.getMessage());
-                exception.printStackTrace();
-            }
-            return sessionFactory;
+
+    /**
+     * Method to connect with the jdbc connector
+     */
+    public Connection getConnection() {
+        Connection connection = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectmain", "adminuser", "element5@123");
+        } catch (Exception exception) {
+            System.out.println(exception);
         }
+        return connection;
+    }
+
+    /**
+     * Method to get the instance of the private object
+     */
+    public static Datasource getInstance() {
+        if (datasource == null) {
+            datasource = new Datasource();
+        }
+        return datasource;
+    }
 }
