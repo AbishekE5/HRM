@@ -1,76 +1,57 @@
 /**
- * Provide the class necessary information to create service class
- * To communicate with controller and model classes
+ * Provides the necessary information to create Project Service Interface
+ * To communicate with the sql server database and to convert the employee object to table
  */
 package com.ideas2it.project.service;
 
 import java.sql.SQLException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.List;
 
-import com.ideas2it.project.dao.ProjectDaoImpl;
 import com.ideas2it.project.model.Project;
 
 /**
- * Class performs business logic of project details
+ * Interface method implementing Project Service
  */
-public class ProjectService {
-    ProjectDaoImpl projectDao = new ProjectDaoImpl();
+public interface ProjectService {
 
     /**
-     * This method is used to create the employee details.
-     * @param projectId      This is the first parameter to create Employee
-     * @param projectName    This is the second parameter to create Employee
-     * @param timeEstimation This is the third parameter to createEmployee
-     * @param bugdet         This is the fourth parameter to createEmployee
-     * @param description    This is the fifth parameter to createEmployee
-     * @return projectId, projectName, timeEstimation, budget, description
+     * This interface method is used to insert project details in project table
+     * @param projectName
+     * @param timeEstimation
+     * @param budget
+     * @param description
+     * @return
      */
-    public Project getProject(int projectId, String projectName, String timeEstimation, String bugdet, String description) {
-        Project project = new Project(projectId, projectName, timeEstimation, bugdet, description);
-        return projectDao.addProjectbyId(project);
-    }
+    public Project insertProject(String projectName, String timeEstimation, String budget, String description);
 
     /**
-     * This method is used to delete the employee details.
-     *
+     * This interface method is used to delete project details in the project table
      * @param projectId
      * @return projectId
+     * @throws SQLException
      */
-    public int deleteProject(int projectId) throws SQLException {
-        return projectDao.deleteProjectById(projectId);
-    }
+    public int deleteProject(int projectId) throws SQLException;
 
     /**
-     * This method is used to update the employee details.
-     *
-     * @param
-     * @return recievedEmployee
+     * This interface method is used to update project details in the project table
+     * @param projectId, projectName, timeEstimation, budget, description
+     * @return projectId, projectName, timeEstimation, budget, description
+     * @throws SQLException
      */
-    public int updateProject(int projectId, String projectName, String timeEstimation, String bugdet, String description) {
-        return projectDao.updateProjectById(projectId, description, timeEstimation, bugdet, projectName);
-    }
+    public int updateProject(int projectId, String projectName, String timeEstimation, String budget, String description);
 
     /**
-     * This method is used to validate phone number
-     *
-     * @param phoneNumber
-     * @return true, false
+     * This interface method is used to retrieve project details in the project table
+     * @param projectId
+     * @return
      */
-    public boolean phoneNumber(String phoneNumber) {
-        String number = "\\d{10}";
-        //Creating a pattern object
-        Pattern pattern = Pattern.compile(number);
-        //Creating a Matcher object
-        Matcher matcher = pattern.matcher(phoneNumber);
-        //Verifying whether given phone number is valid
-        if (matcher.matches()) {
-            return true;
+    public Project getProjectById(int projectId) throws SQLException;
 
-        } else {
-            return false;
-        }
-    }
+    /**
+     *  This interface method is used to view-all project details in the project table
+     * @param project
+     * @return project
+     * @throws SQLException
+     */
+    List<Project> viewProject(List<Project> project) throws SQLException;
 }
-
-

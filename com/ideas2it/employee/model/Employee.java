@@ -19,17 +19,24 @@ public class Employee {
     private String firstName;
     private String lastName;
     private boolean status;
+    private boolean employeeFlag;
+
+    public boolean isEmployeeFlag() {
+        return employeeFlag;
+    }
+
+    public void setEmployeeFlag(boolean employeeFlag) {
+        this.employeeFlag = employeeFlag;
+    }
 
     /**
      * Parameterized constructor of Employee object
-     * @param employeeId
      * @param phoneNumber
      * @param emailId
      * @param firstName
      * @param lastName
      */
-    public Employee(int employeeId, String phoneNumber, String emailId, String firstName, String lastName) {
-        this.employeeId = employeeId;
+    public Employee(String emailId, String firstName, String lastName, String phoneNumber) {
         this.phoneNumber = phoneNumber;
         this.emailId = emailId;
         this.firstName = firstName;
@@ -40,6 +47,22 @@ public class Employee {
      * Default constructor
      */
     public Employee() {
+    }
+
+    /**
+     * Parameterized constructor of Employee object
+     * @param employeeId
+     * @param emailId
+     * @param firstName
+     * @param lastName
+     * @param phoneNumber
+     */
+    public Employee(int employeeId, String emailId, String firstName, String lastName, String phoneNumber) {
+        this.employeeId = employeeId;
+        this.phoneNumber = phoneNumber;
+        this.emailId = emailId;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     /**
@@ -63,10 +86,11 @@ public class Employee {
         return this.employeeId;
     }
 
+
     /**
      * This method is used to set employeeId object
      */
-    public void setEmployeeid(Integer employeeid) {
+    public void setEmployeeid(int employeeid) {
         this.employeeId = employeeid;
     }
 
@@ -144,6 +168,6 @@ public class Employee {
      * This method is used to append all the employee objects in a list
      */
     public String toString() {
-        return "Employee[EMPLOYEEID= " + employeeId + ", PHONENUMBER= " + phoneNumber + ", EMAILID = " + emailId + ", FIRSTNAME " + firstName + ", LASTNAME " + lastName + "]";
+        return "Employee[EMPLOYEEID= " + employeeId + ",   EMAILID = " + emailId + ", FIRSTNAME " + firstName + ", LASTNAME " + lastName + ", PHONENUMBER " + phoneNumber +"]";
     }
 }

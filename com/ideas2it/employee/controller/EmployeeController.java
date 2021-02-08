@@ -5,28 +5,28 @@
 package com.ideas2it.employee.controller;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.ideas2it.employee.model.Employee;
-import com.ideas2it.employee.service.EmployeeService;
+import com.ideas2it.employee.service.Impl.EmployeeServiceImpl;
 
 /**
  * This class controls the flow of the entire employee operations
  */
 public class EmployeeController {
-    EmployeeService employeeService = new EmployeeService();
+
+    EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
 
     /**
      * This method is used to send the user input to create employee details.
-     *
-     * @param employeeId  This is the first parameter to create Employee
      * @param phoneNumber This is the second parameter to create Employee
      * @param emailID     This is the third parameter to createEmployee
      * @param firstName   This is the fourth parameter to createEmployee
      * @param lastName    This is the fifth parameter to createEmployee
      * @return employeeid, phoneNumber, emailID, firstName, lastName
      */
-    public Employee createEmployee(int employeeId, String phoneNumber, String emailID, String firstName, String lastName) {
-        return employeeService.createEmployee(employeeId, phoneNumber, emailID, firstName, lastName);
+    public Employee insertEmployee(String phoneNumber, String emailID, String firstName, String lastName) {
+        return employeeService.insertEmployee(phoneNumber, emailID, firstName, lastName);
     }
 
     /**
@@ -45,13 +45,12 @@ public class EmployeeController {
      * @param phoneNumber
      * @return phoneNumber
      */
-    public boolean phoneNumber(String phoneNumber) {
-        return employeeService.phoneNumber(phoneNumber);
+    public boolean validatephoneNumber(String phoneNumber) {
+        return employeeService.validatephoneNumber(phoneNumber);
     }
 
     /**
      * This method is used to send the user input to create employee details.
-     *
      * @param employeeId  This is the first parameter to create Employee
      * @param phoneNumber This is the second parameter to create Employee
      * @param emailID     This is the third parameter to createEmployee
@@ -59,17 +58,26 @@ public class EmployeeController {
      * @param lastName    This is the fifth parameter to createEmployee
      * @return employeeid, phoneNumber, emailID, firstName, lastName
      */
-    public Employee updateEmployee(int employeeId, String phoneNumber, String emailID, String firstName, String lastName) {
+    public int updateEmployee(int employeeId, String phoneNumber, String emailID, String firstName, String lastName) {
         return employeeService.updateEmployee(employeeId, phoneNumber, emailID, firstName, lastName);
     }
 
     /**
      * This method is used to retrive employee details.
-     *
      * @param employeeId
      * @return employeeId
      */
-    public int getEmployeeById(int employeeId) {
+    public Employee getEmployeeById(int employeeId) throws SQLException {
         return employeeService.getEmployeeById(employeeId);
+    }
+
+    /**
+     * This method is used to view-all employee details.
+     * @param employee
+     * @return employee
+     * @throws SQLException
+     */
+    public List<Employee> viewEmployee(List<Employee> employee) throws SQLException{
+        return employeeService.viewEmployee(employee);
     }
 }

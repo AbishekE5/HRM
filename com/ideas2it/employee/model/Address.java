@@ -2,29 +2,28 @@
  * Provides the necessary information to create Address model class
  * To create objects and to communicate with the Dao classes where it is stored
  */
-
 package com.ideas2it.employee.model;
 
 /**
  * This class creates the address objects
  */
 public class Address {
+
     private int addressId;
     private String city;
-    private String pincode;
+    private int pincode;
     private String permanentAddress;
     private String temporaryAddress;
 
     /**
      * Parameterized constructor of Address object
-     * @param addressId
      * @param city
      * @param pincode
      * @param permanentAddress
      * @param temporaryAddress
      */
-    public Address(int addressId, String city, String pincode, String permanentAddress, String temporaryAddress) {
-        this.addressId = addressId;
+    public Address(String city,  String permanentAddress, int pincode,String temporaryAddress) {
+
         this.city = city;
         this.pincode = pincode;
         this.permanentAddress = permanentAddress;
@@ -48,7 +47,7 @@ public class Address {
     /**
      * This method sets the AddressId object
      */
-    public void setAddressId(Integer addressId) {
+    public void setAddressId(int addressId) {
         this.addressId = addressId;
     }
 
@@ -69,14 +68,14 @@ public class Address {
     /**
      * This method gets the pincode object
      */
-    public String getPincode() {
+    public int getPincode() {
         return pincode;
     }
 
     /**
      * This method sets the pincode object
      */
-    public void setPincode(String pincode) {
+    public void setPincode(int pincode) {
         this.pincode = pincode;
     }
 

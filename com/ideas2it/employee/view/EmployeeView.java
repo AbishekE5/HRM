@@ -2,10 +2,11 @@
  * Provide the class necessary information to create address view class
  * To communicate with the user to get input fields
  */
-
 package com.ideas2it.employee.view;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.ideas2it.employee.controller.EmployeeController;
@@ -24,10 +25,11 @@ public class EmployeeView {
     public static int menu() {
         System.out.println("Choose one option from following : ");
         System.out.println("1) Add a new employee.");
-        System.out.println("2) Delete an employee via Emp-ID.");
-        System.out.println("3) update an employee via Emp-ID.");
-        System.out.println("4) retrive an employee via Emp-ID. ");
-        System.out.println("5) exit");
+        System.out.println("2) Delete an employee via Employee-ID.");
+        System.out.println("3) retrieve an employee via Employee-ID.");
+        System.out.println("4) update an employee via Employee-ID. ");
+        System.out.println("5) view all employees");
+        System.out.println("6) Exit");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
@@ -37,26 +39,31 @@ public class EmployeeView {
      */
     public void performCrud() throws SQLException {
         int menuStore = menu();
-        while (menuStore != 5) {
+        while (menuStore !=6) {
             System.out.println();
             switch (menuStore) {
 
-                /* switch statement to create employee details */
                 case 1:
-                    this.addEmployee();
+                    this.insertEmployeeById();
                     break;
 
-                /* Case to delete the employee details with user input */
                 case 2:
                     this.deleteEmployee();
                     break;
 
-                /* case to retrive data using employee-id */
                 case 3:
-                    this.updateEmployee();
+                    this.getEmployeeById();
                     break;
 
                 case 4:
+                    this.updateEmployee();
+                    break;
+
+                    case 5:
+                    this.viewEmployee();
+                    break;
+
+                    case 6:
                     return;
             }
             menuStore = menu();
@@ -66,30 +73,28 @@ public class EmployeeView {
     /**
      * This method is used to add a new employee
      */
-    public void addEmployee() {
+    public void insertEmployeeById() {
         Scanner scanner = new Scanner(System.in);
         String phoneNumber;
         boolean number = true;
         do {
             System.out.println("Enter Phone Number: ");
             phoneNumber = scanner.nextLine();
-            if (employeeController.phoneNumber(phoneNumber)) {
+            if (employeeController.validatephoneNumber(phoneNumber)) {
                 System.out.println("Entered Number is Valid");
                 break;
             } else {
                 System.out.println("Entered Number is Invalid... Enter valid Number");
             }
         } while (number);
-        System.out.println("Enter a employee Id: ");
-        int employeeId = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter EmailID ");
         String emailID = scanner.nextLine();
         System.out.println("Enter First Name: ");
         String firstName = scanner.nextLine();
         System.out.println("Enter Last Name: ");
         String lastName = scanner.nextLine();
-        employeeController.createEmployee(employeeId, phoneNumber, emailID, firstName, lastName);
-        System.out.println("Employee Successfully created");
+        Employee employee =employeeController.insertEmployee(phoneNumber, emailID, firstName, lastName);
+        System.out.println("Employee Successfully created...  Employee ID is " + employee.getEmployeeid());
     }
 
     /**
@@ -104,7 +109,7 @@ public class EmployeeView {
     }
 
     /**
-     * This method is used to perform the retrieve operations
+     * This method is used to perform the update operations
      */
     public void updateEmployee() {
         Scanner scanner = new Scanner(System.in);
@@ -118,7 +123,34 @@ public class EmployeeView {
         String firstName = scanner.nextLine();
         System.out.println("Enter new Last Name: ");
         String lastName = scanner.nextLine();
-        Employee employee = employeeController.updateEmployee(employeeId, phoneNumber, emailID, firstName, lastName);
+        int employee = employeeController.updateEmployee(employeeId, phoneNumber, emailID, firstName, lastName);
+        System.out.println(employee);
+    }
+
+    /**
+     * This method is used to perform the retrieve operations
+     */
+    public void getEmployeeById() throws SQLException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter the Emp-ID of the employee you wish to retrieve: ");
+        int employeeId = scanner.nextInt();
+        Employee employee=employeeController.getEmployeeById(employeeId);
+        if (employee==null){
+            System.out.println("Employee does not exists");
+        }
+        else {
+            System.out.println(employee);
+        }
+        System.out.println("Employee Successfully retrieved");
+    }
+
+    /**
+     * This method is used to perform the view-all employee operations
+     */
+    public void viewEmployee() throws SQLException {
+        List<Employee> employee = new ArrayList<Employee>();
+        employeeController.viewEmployee(employee);
         System.out.println(employee);
     }
 }
+

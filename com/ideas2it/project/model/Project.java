@@ -8,6 +8,7 @@ package com.ideas2it.project.model;
  * This class creates the project objects
  */
 public class Project {
+
     private int projectId;
     private String projectName;
     private String timeEstimation;
@@ -16,14 +17,12 @@ public class Project {
 
     /**
      * Parameterized constructor of Project object
-     * @param projectId
      * @param description
      * @param timeEstimation
      * @param budget
      * @param projectName
      */
-    public Project(int projectId, String description, String timeEstimation, String budget, String projectName) {
-        this.projectId = projectId;
+    public Project(String description, String timeEstimation, String budget, String projectName) {
         this.projectName = projectName;
         this.timeEstimation = timeEstimation;
         this.budget = budget;
@@ -35,6 +34,22 @@ public class Project {
      */
     public Project() {
 
+    }
+
+    /**
+     * Parameterized constructor of Project object
+     * @param projectId
+     * @param description
+     * @param timeEstimation
+     * @param budget
+     * @param projectName
+     */
+    public Project(int projectId, String description, String timeEstimation, String budget, String projectName) {
+        this.projectId = projectId;
+        this.description = description;
+        this.timeEstimation = timeEstimation;
+        this.budget = budget;
+        this.projectName =projectName;
     }
 
     /**
@@ -111,6 +126,6 @@ public class Project {
      * This method is used o append all the objects o list
      */
     public String toString() {
-        return "PROJECT [PROJECTID= " + projectId + ", DESCRIPTION= " + description + ", PROJECTNAME = " + projectName + ", TIME " + timeEstimation + ", BUDGET " + budget + "]";
+        return "PROJECT [PROJECTID= " + projectId + ", DESCRIPTION= " + description + ", TIME = " + timeEstimation + ", BUDGET " + budget + ", PROJECTNAME = " + projectName + "]";
     }
 }

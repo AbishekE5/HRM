@@ -7,13 +7,14 @@ package com.ideas2it.employee.controller;
 import java.sql.SQLException;
 
 import com.ideas2it.employee.model.Address;
-import com.ideas2it.employee.service.AddressService;
+import com.ideas2it.employee.service.Impl.AddressServiceImpl;
 
 /**
- * This class controls the flow of the entire employee operations
+ * This class controls the flow of the entire address operations
  */
 public class AddressController {
-    AddressService addressService = new AddressService();
+
+    AddressServiceImpl addressService = new AddressServiceImpl();
 
     /**
      * This method is used to send the user input to create employee details.
@@ -24,8 +25,8 @@ public class AddressController {
      * @param temporaryAddress This is the fourth parameter to createEmployee
      * @return city, pincode, permanentAddress, temporaryAddress
      */
-    public Address createAddress(int addressId, String city, String pincode, String permanentAddress, String temporaryAddress) throws SQLException {
-        return addressService.createAddress(addressId, city, pincode, permanentAddress, temporaryAddress);
+    public Address insertAddress(String city,  String permanentAddress, String temporaryAddress,int pincode) throws SQLException {
+        return addressService.insertAddress(city,  pincode, permanentAddress, temporaryAddress);
     }
 
     /**
@@ -40,10 +41,22 @@ public class AddressController {
 
     /**
      * This method is used to update employee details.
+     *
      * @param addressId, city, pincode, permanentAddress, temporaryAddress
      * @return addressId, city, pincode, permanentAddress, temporaryAddress
      */
-    public int updateAddress(int addressId, String city, String pincode, String permanentAddress, String temporaryAddress) {
+    public int updateAddress(int addressId, String city, int pincode, String permanentAddress, String temporaryAddress) {
         return addressService.updateAddress(addressId, city, pincode, permanentAddress, temporaryAddress);
     }
+
+    /**
+     * This method is used to get the address details.
+     *
+     * @param addressId
+     * @return
+     */
+    public Address getAddressById(int addressId) {
+        return addressService.getAddressById(addressId);
+    }
+
 }
