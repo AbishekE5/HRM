@@ -22,7 +22,7 @@ public class Address {
      * @param permanentAddress
      * @param temporaryAddress
      */
-    public Address(String city,  String permanentAddress, int pincode,String temporaryAddress) {
+    public Address(String city,  String permanentAddress, int pincode, String temporaryAddress) {
 
         this.city = city;
         this.pincode = pincode;

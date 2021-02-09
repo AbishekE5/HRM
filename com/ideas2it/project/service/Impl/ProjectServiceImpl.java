@@ -55,8 +55,8 @@ public class ProjectServiceImpl implements ProjectService {
      * {@inheritDoc}
      */
     @Override
-    public List<Project> viewProject(List<Project> project) throws SQLException {
-        return projectDao.viewProject(project);
+    public List<Project> viewAllProject(List<Project> project) throws SQLException {
+        return projectDao.viewAllProject(project);
     }
 
 }

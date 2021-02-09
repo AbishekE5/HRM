@@ -42,7 +42,6 @@ public class EmployeeView {
         while (menuStore !=6) {
             System.out.println();
             switch (menuStore) {
-
                 case 1:
                     this.insertEmployeeById();
                     break;
@@ -59,11 +58,11 @@ public class EmployeeView {
                     this.updateEmployee();
                     break;
 
-                    case 5:
-                    this.viewEmployee();
+                case 5:
+                    this.viewAllEmployee();
                     break;
 
-                    case 6:
+                case 6:
                     return;
             }
             menuStore = menu();
@@ -88,11 +87,11 @@ public class EmployeeView {
             }
         } while (number);
         System.out.println("Enter EmailID ");
-        String emailID = scanner.nextLine();
+        String emailID = scanner.next();
         System.out.println("Enter First Name: ");
-        String firstName = scanner.nextLine();
+        String firstName = scanner.next();
         System.out.println("Enter Last Name: ");
-        String lastName = scanner.nextLine();
+        String lastName = scanner.next();
         Employee employee =employeeController.insertEmployee(phoneNumber, emailID, firstName, lastName);
         System.out.println("Employee Successfully created...  Employee ID is " + employee.getEmployeeid());
     }
@@ -141,15 +140,15 @@ public class EmployeeView {
         else {
             System.out.println(employee);
         }
-        System.out.println("Employee Successfully retrieved");
+
     }
 
     /**
      * This method is used to perform the view-all employee operations
      */
-    public void viewEmployee() throws SQLException {
+    public void viewAllEmployee() throws SQLException {
         List<Employee> employee = new ArrayList<Employee>();
-        employeeController.viewEmployee(employee);
+        employee =employeeController.viewAllEmployee(employee);
         System.out.println(employee);
     }
 }

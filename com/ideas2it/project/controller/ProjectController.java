@@ -64,7 +64,7 @@ public class ProjectController {
      * @return
      * @throws SQLException
      */
-    public List<Project> viewProject(List<Project> project) throws SQLException {
-        return projectService.viewProject(project);
+    public List<Project> viewAllProject(List<Project> project) throws SQLException {
+        return projectService.viewAllProject(project);
     }
 }

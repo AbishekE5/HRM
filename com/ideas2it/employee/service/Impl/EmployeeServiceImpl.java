@@ -3,9 +3,6 @@
  */
 package com.ideas2it.employee.service.Impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -14,7 +11,6 @@ import java.util.regex.Pattern;
 import com.ideas2it.employee.dao.Impl.EmployeeDaoImpl;
 import com.ideas2it.employee.model.Employee;
 import com.ideas2it.employee.service.EmployeeService;
-import com.ideas2it.util.Datasource;
 
 /**
  * {@inheritDoc}
@@ -67,15 +63,13 @@ public class EmployeeServiceImpl implements EmployeeService {
      */
     public Employee getEmployeeById(int employeeId) throws SQLException {
         return employeeDao.getEmployeeById(employeeId);
-
-        /**
-         * {@inheritDoc}
-         */
-
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public List<Employee> viewEmployee(List<Employee> employee) throws SQLException {
-        return null;
+    public List<Employee> viewAllEmployee(List<Employee> employee) throws SQLException {
+        return employeeDao.viewAllEmployee(employee);
     }
 }

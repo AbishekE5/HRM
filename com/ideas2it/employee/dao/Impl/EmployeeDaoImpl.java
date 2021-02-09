@@ -120,21 +120,21 @@ public class EmployeeDaoImpl implements EmployeeDao {
     /**
      * {@inheritDoc}
      */
-    public List<Employee> viewEmployee(List<Employee> employee) throws SQLException {
+    public List<Employee> viewAllEmployee(List<Employee> employee) throws SQLException {
         Datasource datasource = Datasource.getInstance();
         try {
             Connection connection = datasource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);
             ResultSet rs = preparedStatement.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 int employeeId = rs.getInt(1);
                 String phoneNumber = rs.getString(2);
                 String emailId = rs.getString(3);
                 String firstName = rs.getString(4);
                 String lastName = rs.getString(5);
                 employee.add(new Employee(employeeId, phoneNumber, emailId, firstName, lastName));
-                connection.close();
             }
+            connection.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

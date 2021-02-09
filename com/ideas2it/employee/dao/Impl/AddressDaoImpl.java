@@ -90,7 +90,6 @@ public class AddressDaoImpl implements AddressDao {
     /**
      * {@inheritDoc}
      */
-
     public Address getAddressById(int addressId) {
         Address address = null;
         Datasource datasource = Datasource.getInstance();

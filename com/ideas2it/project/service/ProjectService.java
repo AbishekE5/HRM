@@ -53,5 +53,5 @@ public interface ProjectService {
      * @return project
      * @throws SQLException
      */
-    List<Project> viewProject(List<Project> project) throws SQLException;
+    List<Project> viewAllProject(List<Project> project) throws SQLException;
 }

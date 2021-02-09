@@ -37,7 +37,6 @@ public class AddressView {
         while (menuStore != 5) {
             System.out.println();
             switch (menuStore) {
-
                 case 1:
                     this.insertAddress();
                     break;
@@ -54,12 +53,11 @@ public class AddressView {
                     this.getAddressById();
                     break;
 
-                    case 5:
-                        return;
+                case 5:
+                    return;
             }
             menuStore = menu();
         }
-
     }
 
     /**
@@ -75,7 +73,7 @@ public class AddressView {
         System.out.println("Enter temporary adress ");
         int pinCode = scanner.nextInt();
         System.out.println("Enter pincode ");
-        Address address =addressController.insertAddress(city ,permanentAddress, temporaryAddress,pinCode);
+        Address address =addressController.insertAddress(city ,permanentAddress, temporaryAddress, pinCode);
         System.out.println("Address successfully inserted... Address ID is" + address.getAddressId());
     }
 

@@ -54,5 +54,5 @@ public interface ProjectDao {
      * @return
      * @throws SQLException
      */
-    public List<Project> viewProject(List<Project> project) throws SQLException;
+    public List<Project> viewAllProject(List<Project> project) throws SQLException;
 }

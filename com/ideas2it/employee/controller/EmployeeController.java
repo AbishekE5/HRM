@@ -41,7 +41,6 @@ public class EmployeeController {
 
     /**
      * This method is used to validate phone number entered by user.
-     *
      * @param phoneNumber
      * @return phoneNumber
      */
@@ -77,7 +76,7 @@ public class EmployeeController {
      * @return employee
      * @throws SQLException
      */
-    public List<Employee> viewEmployee(List<Employee> employee) throws SQLException{
-        return employeeService.viewEmployee(employee);
+    public List<Employee> viewAllEmployee(List<Employee> employee) throws SQLException{
+        return employeeService.viewAllEmployee(employee);
     }
 }

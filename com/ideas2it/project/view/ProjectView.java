@@ -83,7 +83,7 @@ public class ProjectView {
         System.out.println("Enter Project Name: ");
         String projectName = scanner.nextLine();
         Project project =projectController.insertProject(description,timeEstimation,budget,description);
-        System.out.println("Project Successfully created " +project.getProjectId());
+        System.out.println("Project Successfully created. Project ID  " +project.getProjectId());
     }
 
     /**
@@ -137,7 +137,7 @@ public class ProjectView {
      */
     public void viewProject() throws SQLException {
         List<Project> project = new ArrayList<Project>();
-        projectController.viewProject(project);
+        projectController.viewAllProject(project);
         System.out.println(project);
     }
 }

@@ -21,14 +21,6 @@ public class Employee {
     private boolean status;
     private boolean employeeFlag;
 
-    public boolean isEmployeeFlag() {
-        return employeeFlag;
-    }
-
-    public void setEmployeeFlag(boolean employeeFlag) {
-        this.employeeFlag = employeeFlag;
-    }
-
     /**
      * Parameterized constructor of Employee object
      * @param phoneNumber

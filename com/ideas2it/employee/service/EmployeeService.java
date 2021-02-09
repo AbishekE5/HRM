@@ -62,5 +62,5 @@ public interface EmployeeService {
      * @return
      * @throws SQLException
      */
-    public List<Employee> viewEmployee(List<Employee> employee) throws SQLException;
+    public List<Employee> viewAllEmployee(List<Employee> employee) throws SQLException;
 }
