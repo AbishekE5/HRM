@@ -3,13 +3,12 @@
  */
 package com.ideas2it.employee.service.impl;
 
-import com.ideas2it.employee.dao.impl.AddressDaoImpl;
-import com.ideas2it.employee.model.Address;
-import com.ideas2it.employee.service.AddressService;
-
 import java.sql.SQLException;
 import java.util.List;
 
+import com.ideas2it.employee.dao.impl.AddressDaoImpl;
+import com.ideas2it.employee.model.Address;
+import com.ideas2it.employee.service.AddressService;
 /**
  * This class performs the business logic operations of the address
  * @version 1.1 11 Feb 2021
@@ -24,7 +23,7 @@ public class AddressServiceImpl implements AddressService {
      */
     @Override
     public Address insertAddress(String city, int pincode, String permanent_address, String temporary_address, int employeeId) {
-        Address address = new Address(city, pincode, permanent_address, temporary_address,employeeId);
+        Address address = new Address(city, pincode, permanent_address, temporary_address, employeeId);
         return addressDaoImpl.insertAddress(address);
     }
 

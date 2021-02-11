@@ -222,7 +222,7 @@ public class EmployeeView {
         String temporary_address = scanner.next();
         System.out.println("Enter employeeId ");
         int employeeId = scanner.nextInt();
-        Address address =employeeController.insertAddress(city ,pinCode, permanent_address ,temporary_address,employeeId);
+        Address address =employeeController.insertAddress(city, pinCode, permanent_address, temporary_address, employeeId);
         System.out.println("Address successfully inserted... Address ID is " + address.getAddressId());
     }
 
@@ -269,7 +269,7 @@ public class EmployeeView {
         String permanentAddress = scanner.next();
         System.out.println("Enter Temporary address ");
         String temporaryAddress = scanner.next();
-        employeeController.updateAddress(city, pincode, permanentAddress, temporaryAddress,addressId);
+        employeeController.updateAddress(city, pincode, permanentAddress, temporaryAddress, addressId);
         System.out.println("Successfully updated");
     }
 }

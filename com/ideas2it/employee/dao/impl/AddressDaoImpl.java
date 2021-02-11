@@ -12,7 +12,6 @@ import java.util.List;
 
 import com.ideas2it.employee.dao.AddressDao;
 import com.ideas2it.employee.model.Address;
-import com.ideas2it.employee.model.Employee;
 import com.ideas2it.util.Datasource;
 
 /**
