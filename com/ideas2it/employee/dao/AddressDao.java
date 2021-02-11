@@ -4,6 +4,9 @@
  */
 package com.ideas2it.employee.dao;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import com.ideas2it.employee.model.Address;
 
 /**
@@ -13,7 +16,7 @@ public interface AddressDao {
 
     /**
      * This method is used to create address details in the address table
-     * @param address
+     * @param
      * @return address
      */
     public Address insertAddress(Address address);
@@ -27,7 +30,7 @@ public interface AddressDao {
      * @param temporaryAddress
      * @return rowCount
      */
-    public int updateAddressById(int addressId, String city, int pincode, String permanentAddress, String temporaryAddress);
+    public int updateAddressById(String city, int pincode, String permanentAddress, String temporaryAddress, int addressId);
 
     /**
      * This method is used to delete employee details in the employee table
@@ -42,4 +45,12 @@ public interface AddressDao {
      * @return
      */
     public Address getAddressById(int addressId);
+
+    /**
+     * This method is to view all employee details in the address table
+     * @param address
+     * @return
+     * @throws SQLException
+     */
+    public List<Address> viewAllAddress(List<Address> address) throws SQLException;
 }

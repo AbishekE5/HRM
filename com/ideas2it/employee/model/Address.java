@@ -14,6 +14,7 @@ public class Address {
     private int pincode;
     private String permanentAddress;
     private String temporaryAddress;
+    private int employeeId;
 
     /**
      * Parameterized constructor of Address object
@@ -22,12 +23,13 @@ public class Address {
      * @param permanentAddress
      * @param temporaryAddress
      */
-    public Address(String city,  String permanentAddress, int pincode, String temporaryAddress) {
+    public Address(String city, int pincode, String permanentAddress, String temporaryAddress, int employeeId) {
 
         this.city = city;
         this.pincode = pincode;
         this.permanentAddress = permanentAddress;
         this.temporaryAddress = temporaryAddress;
+        this.employeeId = employeeId;
     }
 
     /**
@@ -36,7 +38,6 @@ public class Address {
     public Address() {
 
     }
-
     /**
      * This method gets the AddressId object
      */
@@ -108,10 +109,25 @@ public class Address {
     }
 
     /**
+     * This method is used to get the employee Id
+     * @return employeeId
+     */
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    /**
+     * This method is used to set the employee Id
+     * @return employeeId
+     */
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
+    /**
      * This method appends the entire object to a list
      */
     public String toString() {
-        return "ADDRESS[ ID = " + addressId + ", CITY= " + city + ", PINCODE= " + pincode + " PERMANENT ADDRESS = " + permanentAddress + " TEMPORARY ADDRESS" + temporaryAddress + "]";
+        return "ADDRESS[ ID = " + addressId + ", CITY= " + city + ", PINCODE= " + pincode + " PERMANENT ADDRESS = " + permanentAddress + " TEMPORARY ADDRESS = " + temporaryAddress + "]";
     }
 
 }

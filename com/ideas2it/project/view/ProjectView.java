@@ -16,6 +16,7 @@ import com.ideas2it.project.model.Project;
  * This class interacts with the user of employee details
  */
 public class ProjectView {
+
     ProjectController projectController = new ProjectController();
 
     /**

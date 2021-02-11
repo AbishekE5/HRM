@@ -1,5 +1,6 @@
 /**
- * {@inheritDoc}
+ * Provides the necessary information to create Project Dao Implementation class
+ * To communicate with the sql server database and to convert the project object to table
  */
 package com.ideas2it.project.dao;
 
@@ -9,12 +10,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.ideas2it.project.dao.Impl.ProjectDao;
+import com.ideas2it.project.dao.impl.ProjectDao;
 import com.ideas2it.project.model.Project;
 import com.ideas2it.util.Datasource;
 
 /**
- * {@inheritDoc}
+ * This class establishes the database connectivity with the sql server
+ * @version 1.1 11 Feb 2021
+ * @author Abishek Anand
  */
 public class ProjectDaoImpl implements ProjectDao {
 

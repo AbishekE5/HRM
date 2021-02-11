@@ -9,8 +9,13 @@ import java.util.List;
 
 import com.ideas2it.project.model.Project;
 
-import com.ideas2it.project.service.Impl.ProjectServiceImpl;
+import com.ideas2it.project.service.impl.ProjectServiceImpl;
 
+/**
+ * This class controls the flow of the entire project operations
+ * @version 1.1 11 Feb 2021
+ * @author Abishek Anand
+ */
 public class ProjectController {
 
     /**

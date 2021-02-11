@@ -4,10 +4,11 @@
  */
 package com.ideas2it.employee.service;
 
-import com.ideas2it.employee.model.Employee;
-
 import java.sql.SQLException;
 import java.util.List;
+
+import com.ideas2it.employee.model.Address;
+import com.ideas2it.employee.model.Employee;
 
 /**
  * This class performs business logic of the employee details
@@ -63,4 +64,13 @@ public interface EmployeeService {
      * @throws SQLException
      */
     public List<Employee> viewAllEmployee(List<Employee> employee) throws SQLException;
+
+    /**
+     * This method is used to view all address details
+     * @param address
+     * @return
+     * @throws SQLException
+     */
+    public List<Address> viewAllAddress(List<Address> address) throws SQLException;
+
 }
