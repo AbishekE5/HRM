@@ -23,7 +23,7 @@ public class AddressDaoImpl implements AddressDao {
 
     private final String INSERT_USERS_SQL = "INSERT INTO address1 (city, pincode,  permanent_address, temporary_address , employeeID) VALUES  (?,?,?,?,?);";
     private final String SELECT_USER_BY_ID = "select addressID, city , pincode, permanent_address, temporary_address from address1 where employeeID =?";
-    private final String SELECT_ALL_USERS = "Select addressID, city , pincode, permanent_address, temporary_address from address1";
+    private final String SELECT_ALL_USERS = "Select  city , pincode, permanent_address, temporary_address,employeeID from address1";
     private final String SELECT_AUTO_ID = "(select max(addressID) from address1)";
     private final String DELETE_USERS_SQL = "update address1 SET status=0  where employeeID = ?;";
     private final String UPDATE_USERS_SQL = "update address1 set  city = ?, pincode = ?, permanent_address =?, temporary_address =?  where employeeID = ?";
@@ -69,8 +69,8 @@ public class AddressDaoImpl implements AddressDao {
             preparedStatement.setString(4, temporaryAddress);
             preparedStatement.setInt(5, employeeId);
             rowCount = preparedStatement.executeUpdate();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
         return rowCount;
     }
@@ -86,8 +86,8 @@ public class AddressDaoImpl implements AddressDao {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USERS_SQL);
             preparedStatement.setInt(1, employeeID);
             preparedStatement.executeUpdate();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
         return employeeID;
     }
@@ -102,14 +102,14 @@ public class AddressDaoImpl implements AddressDao {
             Connection connection = datasource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID);
             preparedStatement.setInt(1, employeeId);
-            ResultSet rs = preparedStatement.executeQuery();
-            if (rs.next()) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
                 address = new Address();
-                address.setEmployeeId(rs.getInt(1));
-                address.setCity(rs.getString(2));
-                address.setPincode(rs.getInt(3));
-                address.setPermanentAddress(rs.getString(4));
-                address.setTemporaryAddress(rs.getString(5));
+                address.setEmployeeId(resultSet.getInt(1));
+                address.setCity(resultSet.getString(2));
+                address.setPincode(resultSet.getInt(3));
+                address.setPermanentAddress(resultSet.getString(4));
+                address.setTemporaryAddress(resultSet.getString(5));
                 connection.close();
                 return address;
             }
@@ -132,13 +132,13 @@ public class AddressDaoImpl implements AddressDao {
         try {
             Connection connection = datasource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                int employeeId = rs.getInt(1);
-                String city = rs.getString(2);
-                int pincode = rs.getInt(3);
-                String permanentAddress = rs.getString(4);
-                String temporaryAddress = rs.getString(5);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String city = resultSet.getString(1);
+                int pincode = resultSet.getInt(2);
+                String permanentAddress = resultSet.getString(3);
+                String temporaryAddress = resultSet.getString(4);
+                int employeeId =resultSet.getInt(5);
                 address.add(new Address(city, pincode, permanentAddress, temporaryAddress, employeeId));
             }
             connection.close();

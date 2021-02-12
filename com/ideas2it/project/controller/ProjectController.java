@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.ideas2it.project.model.Project;
-
 import com.ideas2it.project.service.impl.ProjectServiceImpl;
 
 /**

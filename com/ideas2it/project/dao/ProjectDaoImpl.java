@@ -86,8 +86,8 @@ public class ProjectDaoImpl implements ProjectDao {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USERS_SQL);
             preparedStatement.setInt(1, projectId);
             preparedStatement.executeUpdate();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
         return projectId;
     }
@@ -103,14 +103,14 @@ public class ProjectDaoImpl implements ProjectDao {
             Connection connection = datasource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID);
             preparedStatement.setInt(1, projectId);
-            ResultSet rs = preparedStatement.executeQuery();
-            if (rs.next()) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
                 project = new Project();
-                project.setProjectId(rs.getInt(1));
-                project.setDescription(rs.getString(2));
-                project.setTimeEstimation(rs.getString(3));
-                project.setBudget(rs.getString(4));
-                project.setProjectName(rs.getString(5));
+                project.setProjectId(resultSet.getInt(1));
+                project.setDescription(resultSet.getString(2));
+                project.setTimeEstimation(resultSet.getString(3));
+                project.setBudget(resultSet.getString(4));
+                project.setProjectName(resultSet.getString(5));
                 connection.close();
                 return project;
             }
@@ -131,13 +131,13 @@ public class ProjectDaoImpl implements ProjectDao {
         try {
             Connection connection = datasource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                int projectId = rs.getInt(1);
-                String description = rs.getString(2);
-                String timeEstimation = rs.getString(3);
-                String budget = rs.getString(4);
-                String projectName = rs.getString(5);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int projectId = resultSet.getInt(1);
+                String description = resultSet.getString(2);
+                String timeEstimation = resultSet.getString(3);
+                String budget = resultSet.getString(4);
+                String projectName = resultSet.getString(5);
                 project.add(new Project(projectId, description, timeEstimation, budget, projectName));
             }
             connection.close();

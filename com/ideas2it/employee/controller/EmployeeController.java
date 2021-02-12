@@ -93,7 +93,7 @@ public class EmployeeController {
      * @param employeeId
      * @return city, pincode, permanentAddress, temporaryAddress, employeeId
      */
-    public int updateAddress(String city, int pincode, String permanentAddress, String temporaryAddress,int employeeId) {
+    public int updateAddress(String city, int pincode, String permanentAddress, String temporaryAddress, int employeeId) {
         return employeeService.updateAddress(city, pincode, permanentAddress, temporaryAddress, employeeId);
     }
 

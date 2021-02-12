@@ -127,7 +127,7 @@ public class Address {
      * This method appends the entire object to a list
      */
     public String toString() {
-        return "ADDRESS[ ID = " + addressId + ", CITY= " + city + ", PINCODE= " + pincode + " PERMANENT ADDRESS = " + permanentAddress + " TEMPORARY ADDRESS = " + temporaryAddress + "]";
+        return "ADDRESS[ CITY= " + city + ", PINCODE= " + pincode + " PERMANENT ADDRESS = " + permanentAddress + " TEMPORARY ADDRESS = " + temporaryAddress +"]";
     }
 
 }

@@ -100,14 +100,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
             Connection connection = datasource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID);
             preparedStatement.setInt(1, employeeId);
-            ResultSet rs = preparedStatement.executeQuery();
-            if (rs.next()) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
                 employee = new Employee();
-                employee.setEmployeeid(rs.getInt(1));
-                employee.setPhoneNumber(rs.getString(2));
-                employee.setEmailId(rs.getString(3));
-                employee.setFirstName(rs.getString(4));
-                employee.setLastName(rs.getString(5));
+                employee.setEmployeeid(resultSet.getInt(1));
+                employee.setPhoneNumber(resultSet.getString(2));
+                employee.setEmailId(resultSet.getString(3));
+                employee.setFirstName(resultSet.getString(4));
+                employee.setLastName(resultSet.getString(5));
                 connection.close();
                 return employee;
             }
@@ -128,13 +128,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
         try {
             Connection connection = datasource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                int employeeId = rs.getInt(1);
-                String phoneNumber = rs.getString(2);
-                String emailId = rs.getString(3);
-                String firstName = rs.getString(4);
-                String lastName = rs.getString(5);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int employeeId = resultSet.getInt(1);
+                String phoneNumber = resultSet.getString(2);
+                String emailId = resultSet.getString(3);
+                String firstName = resultSet.getString(4);
+                String lastName = resultSet.getString(5);
                 employee.add(new Employee(employeeId, phoneNumber, emailId, firstName, lastName));
             }
             connection.close();
